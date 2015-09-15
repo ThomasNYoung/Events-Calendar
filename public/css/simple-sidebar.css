@@ -96,7 +96,7 @@ body {
 #items .item {
   position: relative;
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1em;
   padding: 15px 30px;
   -webkit-transition: all 250ms;
           transition: all 250ms;

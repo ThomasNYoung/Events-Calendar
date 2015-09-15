@@ -44,7 +44,8 @@
     <div id="box">
         <div id="items">
             <div class="item"> <a href="{{ action('HomeController@showEvents') }}">Events</a></div>
-            
+            <div class="item"> <a href="{{ action('HomeController@showLogin') }}">Login</a></div>
+            <div class="item"> <a href="{{ action('HomeController@showSignUp') }}">Sign Up</a></div>
             <div class="item"> <a href="{{ action('HomeController@showManageEvents') }}">Manage Events</a></div>
             <div class="item"> <a href="{{ action('HomeController@showProfile') }}">Manage Profile</a></div>  
             <div class="item"><a href="{{ action('HomeController@showContacts') }}">Contact</a></div>
