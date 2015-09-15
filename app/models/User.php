@@ -21,13 +21,17 @@ class User extends Model implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
+	protected $hashable = array('password');
+	public function events()
+	{
+		return $this->hasMany('CalendarEvent');
+		
+	}
 	protected $hidden = array('password', 'remember_token');
 
 	protected $rules = array(
-		'email' => 'require|email|max:255|unique:users',
-		'first_name' => 'required|max:255',
-		'last_name' => 'required|max:255',
+		'email' => 'required|email|max:255|unique:users',
 		'password' => 'required|confirmed'
-		)
+		);
 
 }

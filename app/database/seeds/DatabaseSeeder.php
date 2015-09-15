@@ -1,7 +1,5 @@
 <?php
-
 class DatabaseSeeder extends Seeder {
-
 	/**
 	 * Run the database seeds.
 	 *
@@ -10,8 +8,9 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
-
-		// $this->call('UserTableSeeder');
+		DB::table('events')->delete();
+		DB::table('users')->delete();
+		$this->call('UsersTableSeeder');
+		$this->call('EventsTableSeeder');
 	}
-
 }

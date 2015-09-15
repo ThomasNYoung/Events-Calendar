@@ -21,5 +21,13 @@ Route::get('events', 'HomeController@showEvents');
 Route::get('manange_events', 'HomeController@showManageEvents');
 Route::get('profile', 'HomeController@showProfile');
 Route::get('contacts', 'HomeController@showContacts');
+
 Route::get('login', 'HomeController@showLogin');
+Route::post('login', 'HomeController@doLogin');
+
+Route::get('logout', 'HomeController@doLogout');
+
+
 Route::get('signup', 'HomeController@showSignUp');
+
+

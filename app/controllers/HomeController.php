@@ -61,20 +61,20 @@ class HomeController extends BaseController {
    		$password = Input::get('password');
 
    		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
-		    return Redirect::intended('posts');
+		    return Redirect::intended('home');
 		} else {
 		    // login failed, go back to the login screen
 		    // 1.display a session flash error
 		    // 2.log email that tried to authenticate
 		    Session::flash('errorMessage', 'eMail or password was incorrect.');
             Log::error('User failed to authenticate!', array('email' => $email));
-		    return Redirect::action('HomeController@showLogin')->withInput;
+		    return Redirect::action('HomeController@showHome')->withInput;
 			}
    	}
 
    	public function doLogout()
    	{
    		Auth::logout();
-   		return Redirect::to('posts');
+   		return Redirect::to('home');
    	}
 }

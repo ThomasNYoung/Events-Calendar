@@ -41,17 +41,51 @@
             <div id='middle'></div>
             <div id='bottom'></div>
     </div>
+
     <div id="box">
         <div id="items">
+
             <div class="item"> <a href="{{ action('HomeController@showEvents') }}">Events</a></div>
-            <div class="item"> <a href="{{ action('HomeController@showLogin') }}">Login</a></div>
-            <div class="item"> <a href="{{ action('HomeController@showSignUp') }}">Sign Up</a></div>
+            <div class="item"> <a data-toggle="modal" data-target="#myModal" href="#" style="text-color:black;">Login</a></div>
+            @if (Auth::check())
             <div class="item"> <a href="{{ action('HomeController@showManageEvents') }}">Manage Events</a></div>
             <div class="item"> <a href="{{ action('HomeController@showProfile') }}">Manage Profile</a></div>  
+            @endif
+            <div class="item"> <a href="{{ action('HomeController@showSignUp') }}">Sign Up</a></div>
             <div class="item"><a href="{{ action('HomeController@showContacts') }}">Contact</a></div>
+            <div class="item"> <a href="{{ action('HomeController@doLogout') }}">Log Out</a></div>
         </div>
-    </div>
-</div>
+    </div>    
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Log In</h4>
+                  </div>
+                  <div class="modal-body">
+                    {{ Form::open(array('action' => 'HomeController@doLogin')) }}
+                      <div class="form-group">
+                          {{ Form::label('email', 'eMail Address') }}
+                          {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+                      </div>
+                      <div class="form-group">
+                          {{ Form::label('password', 'Password') }}
+                          {{ Form::password('password', array('class' => 'form-control')) }}
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Log In</button>
+                      </div>
+                    {{ Form::close() }}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    
+                  </div>
+                  </div>
+                </div>
+            </div>
+        
     <!-- /#wrapper -->
 
     <!-- jQuery -->
