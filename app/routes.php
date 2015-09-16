@@ -18,7 +18,7 @@ Route::get('/', function()
 
 Route::get('home', 'HomeController@showHome');
 Route::get('events', 'HomeController@showEvents');
-Route::get('manange_events', 'HomeController@showManageEvents');
+Route::get('manage_events', 'HomeController@showManageEvents');
 Route::get('profile', 'HomeController@showProfile');
 Route::get('contacts', 'HomeController@showContacts');
 
@@ -28,6 +28,11 @@ Route::post('login', 'HomeController@doLogin');
 Route::get('logout', 'HomeController@doLogout');
 
 
-Route::get('signup', 'HomeController@showSignUp');
+Route::resource('events', 'EventsController');
 
+Route::resource('users', 'UsersController');
+
+
+
+Route::get('profile', 'UsersController@store');
 

@@ -12,10 +12,22 @@
     <title>Event Slapper</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+    <style type="text/css">
+
+    h1{
+        color: #fff;
+    }
+
+    label {
+        color: #fff;
+    }
+
+    </style>
 
     <!-- jQuery -->
     
@@ -31,8 +43,8 @@
 
 <body>
 <div>    
-    <div id="page-wrapper">
-        <div id="title">@yield('content')</div>
+    <div class="container">
+        <div >@yield('content')</div>
     </div>
 
 
@@ -45,15 +57,20 @@
     <div id="box">
         <div id="items">
 
-            <div class="item"> <a href="{{ action('HomeController@showEvents') }}">Events</a></div>
+            <div class="item"> <a href="{{ action('EventsController@index') }}">Events</a></div>
+             <div class="item"> <a href="{{ action('UsersController@index') }}">Bands</a></div>
+            @if(!Auth::check())
             <div class="item"> <a data-toggle="modal" data-target="#myModal" href="#" style="text-color:black;">Login</a></div>
+            <div class="item"> <a href="{{ action('UsersController@create') }}">Sign Up</a></div>
+            @endif
             @if (Auth::check())
             <div class="item"> <a href="{{ action('HomeController@showManageEvents') }}">Manage Events</a></div>
-            <div class="item"> <a href="{{ action('HomeController@showProfile') }}">Manage Profile</a></div>  
-            @endif
-            <div class="item"> <a href="{{ action('HomeController@showSignUp') }}">Sign Up</a></div>
+            <div class="item"> <a href="{{ action('UsersController@edit') }}">Manage Profile</a></div>  
             <div class="item"><a href="{{ action('HomeController@showContacts') }}">Contact</a></div>
+            @endif
+            @if (Auth::check())
             <div class="item"> <a href="{{ action('HomeController@doLogout') }}">Log Out</a></div>
+            @endif
         </div>
     </div>    
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -89,16 +106,16 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- JavaScript for sidebar woop woop -->
-    <script src="js/sidebar.js"></script>
+    <script src="/js/sidebar.js"></script>
 
     <!-- Menu Toggle Script -->
-
+    @yield('scripts')
     
 
 </body>

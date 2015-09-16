@@ -45,10 +45,6 @@ class HomeController extends BaseController {
 		return View::make('contacts');
 	}
 
-	public function showSignUp()
-	{
-		return View::make('signup');
-	}
 
 	public function showLogin()
 	{
