@@ -27,7 +27,7 @@ Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@doLogout');
 
-Route::get('users/manage-profile', 'UsersController@getManageProfile');
+Route::get('users/manage-profile', 'UsersController@getManageProfiles');
 
 Route::get('events/manage', 'EventsController@getManage');
 

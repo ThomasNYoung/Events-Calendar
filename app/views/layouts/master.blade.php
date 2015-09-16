@@ -21,17 +21,7 @@
     <script src="/js/jquery.js"></script>
 
 
-    <style type="text/css">
-
-    h1{
-        color: #fff;
-    }
-
-    label {
-        color: #fff;
-    }
-
-    </style>
+    
 
     <!-- jQuery -->
     
@@ -70,7 +60,7 @@
             @if (Auth::check())
             <div class="item"> <a href="{{ action('EventsController@getManage') }}">Manage Events</a></div>
             
-            <div class="item"> <a href="{{ action('UsersController@getManageProfile') }}">Manage Profile</a></div> 
+            <div class="item"> <a href="{{ action('UsersController@getManageProfiles') }}">Manage Profile</a></div> 
             
             <div class="item"><a href="{{ action('HomeController@showContacts') }}">Contact</a></div>
             @endif

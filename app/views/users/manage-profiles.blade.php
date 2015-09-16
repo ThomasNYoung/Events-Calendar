@@ -3,13 +3,17 @@
 table {
     color: rgba(255,255,255,1);
 }
-.create, label, .colorscheme{
+.create{
 	color:black;
 }
 .manage{
 	color: rgba(255,255,255,1);
 }
 .modal-body{
+	color: black;
+}
+
+label{
 	color: black;
 }
 .btn-file {
@@ -42,7 +46,7 @@ table {
 
 	<div>
 		<div class="container">
-			<h2 class='manage'>Manage Events<h2>
+			<h2 class='manage'>Manage Profiles<h2>
 			<table class='table table-bordered'>
 				<tr>
 					<th>Band Name</th>
@@ -67,46 +71,60 @@ table {
 					<td>{{ $user->genre }}</td>
 					<td>{{ $user->about }}</td>
 
-					<td><btn class="btn btn-warning" data-toggle="modal" data-target="#editModal{{ $event->id }}">Edit</btn>
+					<td><btn class="btn btn-warning" data-toggle="modal" data-target="#editModal{{ $user->id }}">Edit</btn>
 
 					{{-- EDIT MODAL --}}
     
-				      <div class="modal fade" id="editModal{{ $event->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $event->id }}">
+				      <div class="modal fade" id="editModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $user->id }}">
 				        <div class="modal-dialog" role="document">
 				          <div class="modal-content">
 				            <div class="modal-header">
 				              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				              <div class="modal-title showmodal" id="editModalLabel{{ $event->id }}">
-				              	<img src="{{ $event->img }}" width="100%"></div>
+				              <div class="modal-title showmodal" id="editModalLabel{{ $user->id }}">
+				              	<img src="{{ $user->img }}" width="100%"></div>
 				            </div>
 				            <div class="modal-body">
 				              <div>
-						        <h1 class="create">Edit Your Event</h1>
+						        <h1 class="create">Edit Your Profile</h1>
 
-						        {{ Form::model($event, array('action' => array('EventsController@update', $event->id), 'files'=>true, 'class' => 'horizontal', 'method' => 'PUT')) }}
-						            <div class="form-group colorscheme">
-						                {{ Form::label('title', 'Event Name') }}
-						                {{ Form::text('title', Input::old('title'), ['class' => 'form-control']) }}
+						        {{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'files'=>true, 'class' => 'horizontal', 'method' => 'PUT')) }}
+						            <div class="form-group">
+						                {{ Form::label('band_name', 'Band Name') }}
+						                {{ Form::text('band_name', Input::old('band_name'), array('class' => 'form-control')) }}
 						            </div>
 
-						            <div class="form-group colorscheme">
-						                {{ Form::label('description', 'Event Description') }}
-						                {{ Form::textarea('description', Input::old('description'), ['class' => 'form-control']) }}
+						            <div class="form-group">
+						                {{ Form::label('email', 'Band eMail') }}
+						                {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
 						            </div>
 
-						            <div class="form-group colorscheme">
-						                {{ Form::label('price', 'Cover Price: $') }}
-						                {{ Form::number('price') }}
+						            <div class="form-group">
+						                {{ Form::label('genre', 'Genre') }}
+						                {{ Form::text('genre', Input::old('genre'), array('class' => 'form-control')) }}
 						            </div>
 
-						            <div class="form-group colorscheme">
-						                {{ Form::label('date', 'Event Date') }}
-						                {{ Form::date('date') }}
+						            <div class="form-group">
+						                {{ Form::label('password', 'Password') }}
+						                {{ Form::password('password', array('class' => 'form-control')) }}
+						            </div>
+
+
+
+						         	<div class="form-group">
+						                {{ Form::label('password_confirmation', 'Password Confirmation') }}
+						                {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
+						            </div>
+
+						            <div class="form-group">
+						                {{ Form::label('about', 'About the Band') }}
+						                {{ Form::textarea('about', Input::old('about'), array('class' => 'form-control')) }}
 						            </div>
 
 						            
 
-						            <div class="form-group colorscheme">
+						            
+
+						            <div class="form-group">
 						                {{-- <div class="col-md-6"> --}}
 						                {{ Form::label('img', 'Change Band Photo') }}
 						                    <div class="input-group">
@@ -147,7 +165,7 @@ $(document).on('change', '.btn-file :file', function() {
   	input.trigger('fileselect', [numFiles, label]);
 });
 $(document).ready( function() {
-    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+    $('.btn-file :file').on('fileselect', function(user, numFiles, label) {
         
         var input = $(this).parents('.input-group').find(':text'),
             log = numFiles > 1 ? numFiles + ' files selected' : label;

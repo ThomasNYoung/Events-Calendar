@@ -1,5 +1,17 @@
 @extends('layouts.master')
 
+
+<style type="text/css">
+
+    h1{
+        color: #fff;
+    }
+
+    label {
+        color: #fff;
+    }
+
+</style>
 @section('content')
 
 

@@ -144,12 +144,15 @@ class UsersController extends \BaseController {
             $user->band_name = Input::get('band_name');
             $user->email = Input::get('email');
             $user->password = Input::get('password');
+            $user->password_confirmation = Input::get('password_confirmation');
             $user->genre = Input::get('genre');
             $user->about = Input::get('about');
             if (Input::hasFile('img')) {
                 $user->img = $image->move($directory);
             }
             $user->save();
+            Session::flash('successMessage', 'You edited ' . $user->band_name . '\'s account successfully');
+            return Redirect::action('UsersController@index');
 	}
 	/**
 	 * Remove the specified resource from storage.
@@ -167,11 +170,11 @@ class UsersController extends \BaseController {
         $user->delete();
         return Redirect::action('UsersController@index');
 	}
-    public function getManageProfile()
+    public function getManageProfiles()
     {
-        $query = CalendarEvent::with('user');
+        $query = User::with('events');
         $users = $query->get();
         
-        return View::make('users.manage-profile')->with(array('users' => $users));
+        return View::make('users.manage-profiles')->with(array('users' => $users));
     }
 }
