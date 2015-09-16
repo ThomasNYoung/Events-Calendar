@@ -8,12 +8,12 @@
         <h1 class="create">Create an Profile</h1>
 
         {{ Form::open(array('action' => array('UsersController@store'), 'files'=>true)) }}
-            <div class="form-group">
+            <div class="form-group @if($errors->has('band_name')) has-error @endif">
                 {{ Form::label('band_name', 'Band Name') }}
                 {{ Form::text('band_name', null, array('class' => 'form-control')) }}
             </div>
 
-            <div class="form-group">
+            <div class="form-group @if($errors->has('band_name')) has-error @endif">
                 {{ Form::label('email', 'Band eMail') }}
                 {{ Form::email('email', null, array('class' => 'form-control')) }}
             </div>
@@ -31,12 +31,12 @@
             </div>
             
 
-            <div class="form-group">
+            <div class="form-group @if($errors->has('band_name')) has-error @endif">
                 {{ Form::label('genre', 'Genre') }}
                 {{ Form::text('genre', null, array('class' => 'form-control')) }}
             </div>
 
-            <div class="form-group">
+            <div class="form-group @if($errors->has('band_name')) has-error @endif">
                 {{ Form::label('about', 'About the Band') }}
                 {{ Form::textarea('about', null, array('class' => 'form-control')) }}
             </div>

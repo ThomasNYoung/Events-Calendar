@@ -2,10 +2,10 @@
 
 @section('content')
     
-    <h1>{{ $users->band_name }}</h1>
+    <h1 class="edit">{{ $users->band_name }}</h1>
 
-    {{ Form::model($users, array('action' => array('UsersController@update', $post->id), 'method' => 'PUT', 'files'=>true)) }}
-        @include('users.create-edit-form')
+    {{ Form::model($users, array('action' => array('UsersController@update', $users->id), 'method' => 'PUT', 'files'=>true)) }}
+        @include('users.create')
     {{ Form::close() }}
 
 @stop

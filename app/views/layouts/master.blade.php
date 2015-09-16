@@ -17,6 +17,10 @@
     <!-- Custom CSS -->
     <link href="/css/simple-sidebar.css" rel="stylesheet">
 
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+
     <style type="text/css">
 
     h1{
@@ -64,8 +68,10 @@
             <div class="item"> <a href="{{ action('UsersController@create') }}">Sign Up</a></div>
             @endif
             @if (Auth::check())
-            <div class="item"> <a href="{{ action('HomeController@showManageEvents') }}">Manage Events</a></div>
-            <div class="item"> <a href="{{ action('UsersController@edit') }}">Manage Profile</a></div>  
+            <div class="item"> <a href="{{ action('EventsController@getManage') }}">Manage Events</a></div>
+            
+            <div class="item"> <a href="{{ action('UsersController@getManageProfile') }}">Manage Profile</a></div> 
+            
             <div class="item"><a href="{{ action('HomeController@showContacts') }}">Contact</a></div>
             @endif
             @if (Auth::check())

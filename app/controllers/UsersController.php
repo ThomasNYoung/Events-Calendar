@@ -167,9 +167,11 @@ class UsersController extends \BaseController {
         $user->delete();
         return Redirect::action('UsersController@index');
 	}
-    public function getManage()
+    public function getManageProfile()
     {
-        return View::make('users.manage');
+        $query = CalendarEvent::with('user');
+        $users = $query->get();
+        
+        return View::make('users.manage-profile')->with(array('users' => $users));
     }
-	
 }

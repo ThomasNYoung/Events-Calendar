@@ -56,9 +56,7 @@
                   <h6>Animals are not commodities</h6>
                   <a href="#" class="ca-close">close</a>
                   <div class="ca-content-text">
-                    <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</p>
-                    <p>When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream;</p>
-                    <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+                    <p> {{$user->about}} </p>
                   </div>
                   <ul>
                     <li><a href="#">Read more</a></li>
