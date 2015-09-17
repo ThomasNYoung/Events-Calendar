@@ -118,8 +118,10 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
+	public function edit()
+	{  
+        $id = Auth::id();
+        
         $user = User::find($id);
         if(!$user) {
             Session::flash('errorMessage', "User with id of $id is not found");
@@ -187,6 +189,6 @@ class UsersController extends \BaseController {
 
 
         
-        return View::make('users.manage-profiles')->with(array('users' => $users));
+        return View::make('users.edit')->with(array('users' => $users));
     }
 }

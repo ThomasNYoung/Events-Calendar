@@ -60,7 +60,7 @@
             @if (Auth::check())
             <div class="item"> <a href="{{ action('EventsController@getManage') }}">Manage Events</a></div>
             
-            <div class="item"> <a href="{{ action('UsersController@getManageProfiles') }}">Manage Profile</a></div> 
+            <div class="item"> <a href="{{ action('UsersController@edit') }}">Manage Profile</a></div> 
             
             <div class="item"><a href="{{ action('HomeController@showContacts') }}">Contact</a></div>
             @endif
