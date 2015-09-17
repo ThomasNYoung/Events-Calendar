@@ -4,7 +4,7 @@ class UsersController extends \BaseController {
 	public function __construct()
 	{
 	    parent::__construct();
-	    // $this->beforeFilter('auth', array('except' => array('index', 'show')));
+	    $this->beforeFilter('auth', array('except' => array('index', 'show', 'create')));
 	}
 	/**
 	 * Display a listing of the resource.
@@ -125,6 +125,11 @@ class UsersController extends \BaseController {
             Session::flash('errorMessage', "User with id of $id is not found");
             App::abort(404);
         }
+
+        if($user->id != Auth::id()){
+            Log::info('User tried to break it');
+            App::abort(404);
+        }
 		return View::make('users.edit')->with(['user' => $user]);
 	}
 	/**
@@ -179,6 +184,8 @@ class UsersController extends \BaseController {
     {
         $query = User::with('events');
         $users = $query->get();
+
+
         
         return View::make('users.manage-profiles')->with(array('users' => $users));
     }

@@ -164,9 +164,19 @@ class EventsController extends \BaseController {
     public function getManage()
     {
         $query = CalendarEvent::with('user');
-        $events = $query->get();
+        $search = Auth::id();
+
+        // if($search){
+            $query->where('user_id', $search);
+            // $query->orWhereHas('user', function($q) {
+            //     $search = Auth::id();
+            //     $q->where('id', 'equal', $search);
+            // });
+
+        // }
+        $events = $query->orderBy('created_at')->paginate(10);
         
-        return View::make('events.manage')->with(array('events' => $events));
+        return View::make('events.manage')->with('events', $events);
     }
     public function getList()
     {
