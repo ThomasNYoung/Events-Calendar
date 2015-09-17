@@ -90,34 +90,24 @@ label{
 						        {{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'files'=>true, 'class' => 'horizontal', 'method' => 'PUT')) }}
 						            <div class="form-group">
 						                {{ Form::label('band_name', 'Band Name') }}
-						                {{ Form::text('band_name', Input::old('band_name'), array('class' => 'form-control')) }}
+						                {{ Form::text('band_name', Input::old('band_name'), ['class' => 'form-control']) }}
 						            </div>
 
 						            <div class="form-group">
 						                {{ Form::label('email', 'Band eMail') }}
-						                {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+						                {{ Form::email('email', Input::old('email'), ['class' => 'form-control']) }}
 						            </div>
 
 						            <div class="form-group">
 						                {{ Form::label('genre', 'Genre') }}
-						                {{ Form::text('genre', Input::old('genre'), array('class' => 'form-control')) }}
+						                {{ Form::text('genre', Input::old('genre'), ['class' => 'form-control']) }}
 						            </div>
 
-						            <div class="form-group">
-						                {{ Form::label('password', 'Password') }}
-						                {{ Form::password('password', array('class' => 'form-control')) }}
-						            </div>
-
-
-
-						         	<div class="form-group">
-						                {{ Form::label('password_confirmation', 'Password Confirmation') }}
-						                {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
-						            </div>
+						            
 
 						            <div class="form-group">
 						                {{ Form::label('about', 'About the Band') }}
-						                {{ Form::textarea('about', Input::old('about'), array('class' => 'form-control')) }}
+						                {{ Form::textarea('about', Input::old('about'), ['class' => 'form-control']) }}
 						            </div>
 
 						            

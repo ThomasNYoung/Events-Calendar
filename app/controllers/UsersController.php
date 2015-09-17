@@ -140,19 +140,24 @@ class UsersController extends \BaseController {
             $directory = 'img/uploads/';
             $image = Input::file('img');
     
-            $user = new User;
             $user->band_name = Input::get('band_name');
             $user->email = Input::get('email');
-            $user->password = Input::get('password');
-            $user->password_confirmation = Input::get('password_confirmation');
+            // $user->password = Input::get('password');
+            // $user->password_confirmation = Input::get('password_confirmation');
             $user->genre = Input::get('genre');
             $user->about = Input::get('about');
             if (Input::hasFile('img')) {
                 $user->img = $image->move($directory);
             }
-            $user->save();
-            Session::flash('successMessage', 'You edited ' . $user->band_name . '\'s account successfully');
-            return Redirect::action('UsersController@index');
+            if ($user->save()) {
+                Session::flash('successMessage', 'You edited ' . $user->band_name . '\'s account successfully');
+                return Redirect::action('UsersController@index');
+            } else {
+                Session::flash('errorMessage', 'Could not save user.');
+                dd($user->getErrors()->toArray());
+                return Redirect::action('UsersController@edit', $id)
+                        ->withInput()->withErrors($user->getErrors());
+            }
 	}
 	/**
 	 * Remove the specified resource from storage.

@@ -29,9 +29,13 @@ class User extends Model implements UserInterface, RemindableInterface {
 	}
 	protected $hidden = array('password', 'remember_token');
 
-	protected $rules = array(
-		'email' => 'required|email|max:255|unique:users',
-		'password' => 'required|confirmed'
-		);
+	protected $rulesets = array(
+		'saving' => array(
+			'email' => 'required|email|max:255|unique:users'
+		),
+		'creating' => array(
+			'password' => 'required|confirmed'
+		)
+	);
 
 }

@@ -2,9 +2,9 @@
 
 @section('content')
     
-    <h1 class="edit">{{ $users->band_name }}</h1>
+    <h1 class="edit">{{ $user->band_name }}</h1>
 
-    {{ Form::model($users, array('action' => array('UsersController@update', $users->id), 'method' => 'PUT', 'files'=>true)) }}
+    {{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'method' => 'PUT', 'files'=>true)) }}
         @include('users.create')
     {{ Form::close() }}
 
